@@ -220,13 +220,17 @@ export default defineConfig(({ mode }) => {
             strictPort: false,
             proxy: {
                 '/api': {
-                    target: 'http://carpoolear_backend.test',
+                    target: 'http://127.0.0.1:8000',
                     changeOrigin: true,
                     configure: (proxy) => {
                         proxy.on('proxyRes', (proxyRes) => {
                             proxyRes.headers['Access-Control-Allow-Origin'] = '*';
                         });
                     }
+                },
+                '/img': {
+                    target: 'http://127.0.0.1:8000',
+                    changeOrigin: true
                 }
             }
         },
